@@ -1,0 +1,6 @@
+id,name,species,breed,age,gender,health_status,status,description,image_url,shelter_id,date_added
+1,Buddy,Dog,Golden Retriever,3,Male,Healthy,Available,Friendly and energetic dog,buddy.jpg,1,2025-09-15
+2,Whiskers,Cat,Persian,2,Female,Healthy,Available,Calm and affectionate cat,whiskers.jpg,1,2025-09-20
+3,Max,Dog,German Shepherd,4,Male,Under Treatment,Not Available,Protective and loyal,max.jpg,2,2025-09-10
+4,Luna,Cat,Siamese,1,Female,Healthy,Available,Playful kitten,luna.jpg,1,2025-09-25
+5,Rocky,Dog,Bulldog,5,Male,Healthy,Adopted,Gentle and calm,rocky.jpg,2,2025-08-30

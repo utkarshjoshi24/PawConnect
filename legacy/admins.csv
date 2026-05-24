@@ -1,0 +1,4 @@
+id,username,password,email,role,created_date
+1,admin1,hashed_admin_password,admin1@shelter.org,Super Admin,2025-08-01
+2,shelter_manager,hashed_admin_password,manager@shelter.org,Shelter Manager,2025-08-15
+3,volunteer_coord,hashed_admin_password,volunteer@shelter.org,Volunteer Coordinator,2025-09-01

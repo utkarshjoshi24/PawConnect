@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Animal Adoption System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">🐾 PetHaven Admin</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="animals.html">Find Pets</a></li>
+                    <li><a href="admin.html" class="active">Admin</a></li>
+                    <li><button id="logoutBtn" class="btn btn-secondary">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login Form -->
+        <section id="loginSection" class="admin-section">
+            <div class="container">
+                <div class="admin-login">
+                    <h2>Admin Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section id="dashboardSection" class="admin-section hidden">
+            <div class="container">
+                <h2>Admin Dashboard</h2>
+
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" data-tab="animals">Manage Animals</button>
+                    <button class="tab-btn" data-tab="adoptions">Adoption Requests</button>
+                    <button class="tab-btn" data-tab="users">Users</button>
+                    <button class="tab-btn" data-tab="shelters">Shelters</button>
+                </div>
+
+                <!-- Animals Management -->
+                <div id="animalsTab" class="tab-content active">
+                    <div class="tab-header">
+                        <h3>Manage Animals</h3>
+                        <button id="addAnimalBtn" class="btn btn-primary">Add New Animal</button>
+                    </div>
+                    <div class="admin-table">
+                        <table id="animalsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Species</th>
+                                    <th>Breed</th>
+                                    <th>Age</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Animals will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Adoptions Management -->
+                <div id="adoptionsTab" class="tab-content">
+                    <h3>Adoption Requests</h3>
+                    <div class="admin-table">
+                        <table id="adoptionsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Animal</th>
+                                    <th>Applicant</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Adoptions will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users Management -->
+                <div id="usersTab" class="tab-content">
+                    <h3>Registered Users</h3>
+                    <div class="admin-table">
+                        <table id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Registration Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Shelters Management -->
+                <div id="sheltersTab" class="tab-content">
+                    <h3>Partner Shelters</h3>
+                    <div class="admin-table">
+                        <table id="sheltersTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Capacity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Shelters will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Animal Modal -->
+    <div id="addAnimalModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add New Animal</h3>
+            <form id="addAnimalForm">
+                <div class="form-group">
+                    <label for="animalName">Name:</label>
+                    <input type="text" id="animalName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="animalSpecies">Species:</label>
+                    <select id="animalSpecies" name="species" required>
+                        <option value="">Select Species</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="animalBreed">Breed:</label>
+                    <input type="text" id="animalBreed" name="breed">
+                </div>
+                <div class="form-group">
+                    <label for="animalAge">Age:</label>
+                    <input type="number" id="animalAge" name="age" min="0" max="20">
+                </div>
+                <div class="form-group">
+                    <label for="animalGender">Gender:</label>
+                    <select id="animalGender" name="gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="animalHealth">Health Status:</label>
+                    <select id="animalHealth" name="health_status">
+                        <option value="Healthy">Healthy</option>
+                        <option value="Under Treatment">Under Treatment</option>
+                        <option value="Special Needs">Special Needs</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="animalDescription">Description:</label>
+                    <textarea id="animalDescription" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="animalImage">Image URL:</label>
+                    <input type="url" id="animalImage" name="image_url">
+                </div>
+                <div class="form-group">
+                    <label for="animalShelter">Shelter:</label>
+                    <select id="animalShelter" name="shelter_id">
+                        <option value="1">Happy Paws Animal Shelter</option>
+                        <option value="2">Safe Haven Pet Rescue</option>
+                        <option value="3">Loving Hearts Animal Sanctuary</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Animal</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Animal Adoption Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+id,name,email,password,phone,address,city,registration_date
+1,John Smith,john@email.com,hashed_password,555-0101,123 Main St,Springfield,2025-09-01
+2,Sarah Johnson,sarah@email.com,hashed_password,555-0102,456 Oak Ave,Springfield,2025-09-05
+3,Mike Davis,mike@email.com,hashed_password,555-0103,789 Pine St,Riverside,2025-09-12
+4,Emma Wilson,emma@email.com,hashed_password,555-0104,321 Elm Dr,Springfield,2025-09-18

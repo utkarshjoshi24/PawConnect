@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Adoption Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🐾 PetHaven</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#" data-page="home" class="nav-link active">Home</a>
+                <a href="#" data-page="animals" class="nav-link">Find Pets</a>
+                <a href="#" data-page="shelters" class="nav-link">Shelters</a>
+                <a href="#" data-page="about" class="nav-link">About</a>
+                <button class="btn btn--outline" id="loginBtn">Login</button>
+                <button class="btn btn--primary" id="registerBtn">Register</button>
+            </div>
+            <div class="user-menu hidden" id="userMenu">
+                <span class="user-greeting">Welcome, <span id="userName"></span></span>
+                <button class="btn btn--outline" id="dashboardBtn">Dashboard</button>
+                <button class="btn btn--secondary" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Find Your Perfect Pet Companion</h1>
+                        <p>Connect with loving animals looking for their forever homes. Our centralized platform makes adoption simple, transparent, and rewarding.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn--primary btn--lg" data-page="animals">Browse Pets</button>
+                            <button class="btn btn--outline btn--lg" data-page="about">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <h3 id="totalAnimals">150</h3>
+                            <p>Total Animals</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="adoptedThisMonth">23</h3>
+                            <p>Adopted This Month</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="availableNow">89</h3>
+                            <p>Available Now</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Animals -->
+            <section class="featured-animals">
+                <div class="container">
+                    <h2>Featured Animals</h2>
+                    <div class="animals-grid" id="featuredAnimalsGrid">
+                        <!-- Featured animals will be loaded here -->
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn--primary" data-page="animals">View All Animals</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials">
+                <div class="container">
+                    <h2>Success Stories</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <p>"We found our perfect companion through PetHaven. The adoption process was smooth and the staff was incredibly helpful!"</p>
+                            <div class="testimonial-author">
+                                <strong>Sarah Johnson</strong>
+                                <span>Adopted Luna</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"The platform made it easy to find a pet that matched our family's lifestyle. Our dog Buddy is now part of the family!"</p>
+                            <div class="testimonial-author">
+                                <strong>John Smith</strong>
+                                <span>Adopted Buddy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Animals Page -->
+        <div id="animalsPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Find Your Perfect Pet</h1>
+                    <p>Browse our available animals and find your new best friend</p>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search by name, breed, or species...">
+                    </div>
+                    <div class="filters">
+                        <select id="speciesFilter" class="form-control">
+                            <option value="">All Species</option>
+                            <option value="Dog">Dogs</option>
+                            <option value="Cat">Cats</option>
+                        </select>
+                        <select id="ageFilter" class="form-control">
+                            <option value="">All Ages</option>
+                            <option value="young">Young (0-2 years)</option>
+                            <option value="adult">Adult (3-7 years)</option>
+                            <option value="senior">Senior (8+ years)</option>
+                        </select>
+                        <select id="statusFilter" class="form-control">
+                            <option value="">All Status</option>
+                            <option value="Available">Available</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Animals Grid -->
+                <div class="animals-grid" id="animalsGrid">
+                    <!-- Animals will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Shelters Page -->
+        <div id="sheltersPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Partner Shelters</h1>
+                    <p>Visit our partner shelters and rescue organizations</p>
+                </div>
+                <div class="shelters-grid" id="sheltersGrid">
+                    <!-- Shelters will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>About PetHaven</h1>
+                    <p>Connecting loving families with animals in need</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-section">
+                        <h3>Our Mission</h3>
+                        <p>We believe every animal deserves a loving home. Our platform bridges the gap between shelters and potential adopters, making the adoption process transparent, efficient, and accessible to everyone.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3>How It Works</h3>
+                        <div class="process-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h4>Browse Animals</h4>
+                                <p>Search through our database of available pets using filters for species, age, and location.</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h4>Apply to Adopt</h4>
+                                <p>Fill out our comprehensive adoption application form for the pet you're interested in.</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h4>Meet & Greet</h4>
+                                <p>Visit the shelter to meet your potential new companion and ensure compatibility.</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <h4>Take Them Home</h4>
+                                <p>Complete the adoption process and welcome your new family member home!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>System Architecture</h3>
+                        <div class="architecture-diagram">
+                            <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/ec48521b8d6c62442fe7131256681c7e/405f1ab3-9124-4409-a566-9593051f3d07/184aad95.png" alt="System Architecture Diagram" class="diagram-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="userDashboard" class="page">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>My Dashboard</h1>
+                    <p>Manage your profile and adoption applications</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="dashboard-sidebar">
+                        <div class="sidebar-menu">
+                            <a href="#" class="menu-item active" data-section="profile">Profile</a>
+                            <a href="#" class="menu-item" data-section="applications">My Applications</a>
+                            <a href="#" class="menu-item" data-section="favorites">Favorites</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-main">
+                        <div id="profileSection" class="dashboard-section active">
+                            <h3>Profile Information</h3>
+                            <form id="profileForm" class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" id="profileName" class="form-control" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="profileEmail" class="form-control" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" id="profilePhone" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" id="profileAddress" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div id="applicationsSection" class="dashboard-section">
+                            <h3>My Adoption Applications</h3>
+                            <div id="userApplications">
+                                <!-- Applications will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div id="favoritesSection" class="dashboard-section">
+                            <h3>Favorite Animals</h3>
+                            <div id="favoriteAnimals">
+                                <p>You haven't added any animals to your favorites yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="page">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage animals, users, and adoption applications</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="dashboard-sidebar">
+                        <div class="sidebar-menu">
+                            <a href="#" class="menu-item active" data-section="admin-animals">Animals</a>
+                            <a href="#" class="menu-item" data-section="admin-applications">Applications</a>
+                            <a href="#" class="menu-item" data-section="admin-users">Users</a>
+                            <a href="#" class="menu-item" data-section="admin-shelters">Shelters</a>
+                            <a href="#" class="menu-item" data-section="admin-stats">Statistics</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-main">
+                        <div id="adminAnimalsSection" class="dashboard-section active">
+                            <div class="section-header">
+                                <h3>Animal Management</h3>
+                                <button class="btn btn--primary" id="addAnimalBtn">Add New Animal</button>
+                            </div>
+                            <div class="admin-table-container">
+                                <table class="admin-table" id="adminAnimalsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Species</th>
+                                            <th>Breed</th>
+                                            <th>Age</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Animals data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="adminApplicationsSection" class="dashboard-section">
+                            <h3>Adoption Applications</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table" id="adminApplicationsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>User</th>
+                                            <th>Animal</th>
+                                            <th>Date Applied</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Applications data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="adminUsersSection" class="dashboard-section">
+                            <h3>User Management</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table" id="adminUsersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Registration Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Users data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="adminSheltersSection" class="dashboard-section">
+                            <h3>Shelter Management</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table" id="adminSheltersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Capacity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Shelters data will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="adminStatsSection" class="dashboard-section">
+                            <h3>System Statistics</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <h3 id="adminTotalAnimals">0</h3>
+                                    <p>Total Animals</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h3 id="adminTotalUsers">0</h3>
+                                    <p>Total Users</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h3 id="adminPendingApplications">0</h3>
+                                    <p>Pending Applications</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h3 id="adminApprovedApplications">0</h3>
+                                    <p>Approved Applications</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Animal Detail Modal -->
+    <div id="animalModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="animalModalName">Animal Name</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="animal-detail-content">
+                    <div class="animal-image">
+                        <img id="animalModalImage" src="" alt="Animal Photo">
+                    </div>
+                    <div class="animal-info">
+                        <div class="animal-meta">
+                            <span class="meta-item"><strong>Species:</strong> <span id="animalModalSpecies"></span></span>
+                            <span class="meta-item"><strong>Breed:</strong> <span id="animalModalBreed"></span></span>
+                            <span class="meta-item"><strong>Age:</strong> <span id="animalModalAge"></span> years</span>
+                            <span class="meta-item"><strong>Gender:</strong> <span id="animalModalGender"></span></span>
+                            <span class="meta-item"><strong>Health:</strong> <span id="animalModalHealth"></span></span>
+                            <span class="meta-item"><strong>Adoption Fee:</strong> $<span id="animalModalFee"></span></span>
+                        </div>
+                        <div class="animal-personality">
+                            <strong>Personality:</strong>
+                            <div id="animalModalPersonality" class="personality-tags"></div>
+                        </div>
+                        <div class="animal-description">
+                            <p id="animalModalDescription"></p>
+                        </div>
+                        <div class="adoption-actions">
+                            <button class="btn btn--primary btn--full-width" id="applyAdoptBtn">Apply to Adopt</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isAdmin"> Login as Administrator
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Register</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="registerName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="registerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" id="registerPhone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" id="registerAddress" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <input type="text" id="registerCity" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="registerPassword" class="form-control" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--full-width">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adoption Application Modal -->
+    <div id="adoptionModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adoption Application</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="adoptionForm">
+                    <div class="form-group">
+                        <label class="form-label">Why do you want to adopt this pet?</label>
+                        <textarea id="adoptionReason" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Do you have experience with pets?</label>
+                        <select id="adoptionExperience" class="form-control" required>
+                            <option value="">Select...</option>
+                            <option value="none">No experience</option>
+                            <option value="some">Some experience</option>
+                            <option value="experienced">Very experienced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Living situation</label>
+                        <select id="adoptionLiving" class="form-control" required>
+                            <option value="">Select...</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House with yard</option>
+                            <option value="farm">Farm/Large property</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Additional notes</label>
+                        <textarea id="adoptionNotes" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary btn--full-width">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

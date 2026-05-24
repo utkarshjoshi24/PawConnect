@@ -1,0 +1,5 @@
+id,user_id,animal_id,application_date,status,approval_date,notes
+1,1,5,2025-09-01,Approved,2025-09-05,"Great match, experienced dog owner"
+2,2,1,2025-09-20,Pending,,Application under review
+3,3,2,2025-09-25,Pending,,"First-time pet owner, needs counseling"
+4,4,4,2025-09-28,Rejected,2025-09-30,Housing not suitable for pets
