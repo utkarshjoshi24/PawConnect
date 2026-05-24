@@ -14,7 +14,7 @@ export default function Animals() {
   const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/animals')
+    axios.get('https://pawconnect-x0gc.onrender.com/api/animals')
       .then(res => {
         setAnimals(res.data);
         setLoading(false);
@@ -130,7 +130,7 @@ export default function Animals() {
                 style={{ flex: 1, background: '#10b981', padding: '12px' }}
                 onClick={async () => {
                   try {
-                    await axios.post('http://localhost:5001/api/user/adopt', {
+                    await axios.post('https://pawconnect-x0gc.onrender.com/api/user/adopt', {
                       userId: user.id || user._id,
                       animalId: selectedAnimal._id
                     });

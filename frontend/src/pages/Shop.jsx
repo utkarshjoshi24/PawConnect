@@ -13,7 +13,7 @@ export default function Shop() {
   const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/products')
+    axios.get('https://pawconnect-x0gc.onrender.com/api/products')
       .then(res => {
         setProducts(res.data);
         setLoading(false);

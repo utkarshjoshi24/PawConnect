@@ -27,7 +27,7 @@ export default function AIChat() {
     setIsTyping(true);
 
     try {
-      const res = await axios.post('http://localhost:5001/api/ai/chat', { message: userMsg });
+      const res = await axios.post('https://pawconnect-x0gc.onrender.com/api/ai/chat', { message: userMsg });
       setMessages(prev => [...prev, { text: res.data.reply, sender: 'ai' }]);
     } catch (error) {
       console.error(error);

@@ -14,7 +14,7 @@ export default function Dashboard() {
       return;
     }
 
-    axios.get(`http://localhost:5001/api/user/profile?userId=${user.id || user._id}`)
+    axios.get(`https://pawconnect-x0gc.onrender.com/api/user/profile?userId=${user.id || user._id}`)
       .then(res => setProfileData(res.data))
       .catch(err => console.error(err));
   }, [user, navigate]);

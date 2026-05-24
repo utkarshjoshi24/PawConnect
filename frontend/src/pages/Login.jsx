@@ -16,7 +16,7 @@ export default function Login() {
     setError('');
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
-      const res = await axios.post(`http://localhost:5001${endpoint}`, formData);
+      const res = await axios.post(`https://pawconnect-x0gc.onrender.com${endpoint}`, formData);
       
       login(res.data.user, res.data.token);
       navigate('/dashboard');
