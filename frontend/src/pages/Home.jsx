@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Text3D, Center, PresentationControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -71,9 +72,9 @@ export default function Home() {
           <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '30px', lineHeight: '1.6' }}>
             Experience the future of animal adoption. Browse our 3D interactive gallery and meet pets waiting for a loving home.
           </p>
-          <a href="/animals" className="btn-primary" style={{ fontSize: '1.2rem', padding: '16px 32px' }}>
+          <Link to="/animals" className="btn-primary" style={{ fontSize: '1.2rem', padding: '16px 32px' }}>
             Explore Animals
-          </a>
+          </Link>
         </div>
       </div>
       
